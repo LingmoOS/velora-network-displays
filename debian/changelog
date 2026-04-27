@@ -1,0 +1,29 @@
+deepin-network-displays (0.90.6-deepin2+deb13u2) unstable; urgency=medium
+
+  * fix: keep NMSetting storage type and cast only at the permission helper
+
+ -- guanzi008 <245205080@qq.com>  Sun, 12 Apr 2026 18:35:00 +0800
+
+deepin-network-displays (0.90.6-deepin2+deb13u1) unstable; urgency=medium
+
+  * fix: use the typed NMSettingConnection pointer required by Debian 13 libnm
+
+ -- guanzi008 <245205080@qq.com>  Sun, 12 Apr 2026 18:10:00 +0800
+
+deepin-network-displays (0.90.6-deepin2) unstable; urgency=medium
+
+  * chore: 增加通知标题多语言(Issue: 9693)
+
+ -- zyz <zhaoyignzhen@uniontech.com>  Wed, 24 Jul 2024 14:11:27 +0800
+
+deepin-network-displays (0.90.6-deepin1) unstable; urgency=medium
+
+  * update changelog
+
+ -- fuleyi <fuleyi@uniontech.com>  Thu, 11 Jul 2024 11:11:58 +0800
+
+deepin-network-displays (0.90.5-4) unstable; urgency=medium
+
+  * deepin network display init;
+
+ -- lichangze <lichangze@uniontech.com>  Mon, 07 Aug 2023 16:50:24 +0800
