@@ -1,7 +1,7 @@
-Source: deepin-network-displays
+Source: velora-network-displays
 Section: utils
 Priority: optional
-Maintainer: Deepin Sysdev <sysdev@deepin.com>
+Maintainer: Lingmo OS Team <team@lingmo.org>
 Rules-Requires-Root: no
 Build-Depends: debhelper-compat (= 12),
                libavahi-client-dev,
@@ -14,7 +14,7 @@ Build-Depends: debhelper-compat (= 12),
                libpulse-dev,
                meson (>= 0.46.1)
 Standards-Version: 4.6.1
-Homepage: https://gerrit.uniontech.com/admin/repos/deepin-network-displays
+Homepage: https://github.com/LingmoOS/velora-network-displays
 
 Package: deepin-network-displays
 Architecture: any

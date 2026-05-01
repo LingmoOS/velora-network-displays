@@ -1,3 +1,9 @@
+velora-network-displays (0.90.7.lingmo.1) unstable; urgency=medium
+
+  * new release for Lingmo OS.
+
+ -- Lingmo OS Team <team@lingmo.org>  Fri, 01 May 2026 21:14:00 +0800
+
 deepin-network-displays (0.90.6-deepin2+deb13u2) unstable; urgency=medium
 
   * fix: keep NMSetting storage type and cast only at the permission helper
