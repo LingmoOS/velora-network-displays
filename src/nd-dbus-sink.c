@@ -50,8 +50,8 @@ enum
   PROP_LAST,
 };
 
-#define DEEPIN_ND_SINK_DBUS_PATH "/com/deepin/Cooperation/NetworkDisplay"
-#define DEEPIN_ND_SINK_DBUS_INTERFACE "com.deepin.Cooperation.NetworkDisplay.Sink"
+#define DEEPIN_ND_SINK_DBUS_PATH "/com/lingmo/Cooperation/NetworkDisplay"
+#define DEEPIN_ND_SINK_DBUS_INTERFACE "com.lingmo.Cooperation.NetworkDisplay.Sink"
 
 G_DEFINE_TYPE (NdDbusSink, nd_dbus_sink, G_TYPE_OBJECT)
 
@@ -329,7 +329,7 @@ static void
 nd_dbus_sink_init (NdDbusSink *self)
 {
   const gchar *network_display_sink_interface = "<node>"
-                                                "  <interface name='com.deepin.Cooperation.NetworkDisplay.Sink'>"
+                                                "  <interface name='com.lingmo.Cooperation.NetworkDisplay.Sink'>"
                                                 "    <property name='Status' type='u' access='read'/>"
                                                 "    <property name='Name' type='s' access='read'/>"
                                                 "    <property name='Strength' type='u' access='read'/>"
@@ -358,9 +358,9 @@ nd_dbus_sink_init (NdDbusSink *self)
   self->display_proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
                                                        G_DBUS_PROXY_FLAGS_NONE,
                                                        NULL,
-                                                       "com.deepin.daemon.Display",
-                                                       "/com/deepin/daemon/Display",
-                                                       "com.deepin.daemon.Display",
+                                                       "com.lingmo.daemon.Display",
+                                                       "/com/lingmo/daemon/Display",
+                                                       "com.lingmo.daemon.Display",
                                                        NULL,
                                                        &error);
   if (!self->display_proxy)
@@ -735,7 +735,7 @@ nd_sink_dbus_export (NdDbusSink *self)
 {
   g_autofree gchar *sink_hw_address = NULL;
   g_object_get (self->sink, "hw-address", &sink_hw_address, NULL);
-  g_autofree gchar *path = g_strdup_printf ("/com/deepin/Cooperation/NetworkDisplay/Sink%s", g_strdelimit (g_strdup (sink_hw_address), ":", '_'));
+  g_autofree gchar *path = g_strdup_printf ("/com/lingmo/Cooperation/NetworkDisplay/Sink%s", g_strdelimit (g_strdup (sink_hw_address), ":", '_'));
   D_ND_INFO ("start export nd sink:%s", path);
   self->dbus_path = g_strdup (path);
   static const GDBusInterfaceVTable sink_vtable = {

@@ -4,7 +4,7 @@ After=dbus.service graphical-session.target
 
 [Service]
 Type=dbus
-BusName=com.deepin.Cooperation.NetworkDisplay
+BusName=com.lingmo.Cooperation.NetworkDisplay
 ExecStart=/usr/bin/deepin-network-display-daemon
 Environment=G_MESSAGES_DEBUG=all
 StartLimitBurst=0

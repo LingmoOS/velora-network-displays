@@ -43,9 +43,9 @@ static const gchar *no_video_encoder = "NoVideoEncoder";
 
 static GMainLoop *loop;
 
-#define DEEPIN_ND_DBUS_PATH "/com/deepin/Cooperation/NetworkDisplay"
-#define DEEPIN_ND_DBUS_INTERFACE "com.deepin.Cooperation.NetworkDisplay"
-#define DEEPIN_ND_DBUS_NAME "com.deepin.Cooperation.NetworkDisplay"
+#define DEEPIN_ND_DBUS_PATH "/com/lingmo/Cooperation/NetworkDisplay"
+#define DEEPIN_ND_DBUS_INTERFACE "com.lingmo.Cooperation.NetworkDisplay"
+#define DEEPIN_ND_DBUS_NAME "com.lingmo.Cooperation.NetworkDisplay"
 
 // 闲时退出时间
 static const uint idle_quit_sec = 60;
@@ -348,7 +348,7 @@ handle_manager_quit (NdDbusManager *self)
 static gboolean
 get_deepin_audio_auto_switch ()
 {
-  const gchar *command = "dde-dconfig --get -a org.deepin.dde.daemon -r org.deepin.dde.daemon.audio -k autoSwitchPort";
+  const gchar *command = "dde-dconfig --get -a org.lingmo.daemon -r org.lingmo.daemon.audio -k autoSwitchPort";
   g_autofree gchar *stdout_text = NULL;
   g_autofree gchar *stderr_text = NULL;
   gint exit_status;
@@ -369,7 +369,7 @@ static void
 set_deepin_audio_auto_switch (gboolean enable)
 {
   gchar *auto_string = enable ? "true" : "false";
-  g_autofree gchar *command = g_strdup_printf ("dde-dconfig --set -a org.deepin.dde.daemon -r org.deepin.dde.daemon.audio -k autoSwitchPort -v %s", auto_string);
+  g_autofree gchar *command = g_strdup_printf ("dde-dconfig --set -a org.lingmo.daemon -r org.lingmo.daemon.audio -k autoSwitchPort -v %s", auto_string);
   g_autofree gchar *stdout_text = NULL;
   g_autofree gchar *stderr_text = NULL;
   gint exit_status = 0;
@@ -481,7 +481,7 @@ get_sink_list (NdDbusManager *self)
     {
       NdDbusSink *sink = (NdDbusSink *) self->sink_list->pdata[i];
       g_autofree gchar *path = NULL;
-      path = g_strdup_printf ("/com/deepin/Cooperation/NetworkDisplay/Sink%s",
+      path = g_strdup_printf ("/com/lingmo/Cooperation/NetworkDisplay/Sink%s",
                               g_strdelimit (g_strdup (nd_sink_dbus_get_hw_address (sink)), ":", '_'));
       g_variant_builder_add_value (&builder, g_variant_new_object_path (path));
       D_ND_INFO ("SinkList: get a sink mac: %s", path);
@@ -628,7 +628,7 @@ static void
 gen_node_info_by_xml (NdDbusManager *self)
 {
   const gchar *network_display_interface = "<node>"
-                                           "  <interface name='com.deepin.Cooperation.NetworkDisplay'>"
+                                           "  <interface name='com.lingmo.Cooperation.NetworkDisplay'>"
                                            "    <property name='SinkList' type='ao' access='read'/>"
                                            "    <property name='Enabled' type='b' access='read'/>"
                                            "    <property name='MissingCapabilities' type='as' access='read'/>"
@@ -655,7 +655,7 @@ on_bus_acquired (GDBusConnection *connection,
   };
   guint registration_id = g_dbus_connection_register_object (
       connection,
-      "/com/deepin/Cooperation/NetworkDisplay",
+      "/com/lingmo/Cooperation/NetworkDisplay",
       self->network_display_info->interfaces[0],
       &network_display_vtable,
       user_data, /* user_data */
@@ -670,7 +670,7 @@ on_name_lost (GDBusConnection *connection,
               const gchar *name,
               gpointer user_data)
 {
-  D_ND_WARNING ("com.deepin.Cooperation.NetworkDisplay name lost, need quit this service");
+  D_ND_WARNING ("com.lingmo.Cooperation.NetworkDisplay name lost, need quit this service");
   NdDbusManager *self = ND_DBUS_MANAGER (user_data);
   handle_manager_quit (self);
 }
